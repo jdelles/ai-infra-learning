@@ -1,0 +1,21 @@
+# LiteLLM proxy config — learning exercise
+# In production this would pull API keys from env vars or a secrets manager,
+# never hardcoded. The ${OPENAI_API_KEY} syntax reads from the container's
+# environment at runtime (set via -e or --env-file at docker run).
+
+model_list:
+  - model_name: gpt-4o
+    litellm_params:
+      model: openai/gpt-4o
+      api_key: ${OPENAI_API_KEY}
+
+  - model_name: claude-sonnet
+    litellm_params:
+      model: anthropic/claude-sonnet-4-6
+      api_key: ${ANTHROPIC_API_KEY}
+
+litellm_settings:
+  drop_params: true
+
+general_settings:
+  master_key: ${LITELLM_MASTER_KEY}

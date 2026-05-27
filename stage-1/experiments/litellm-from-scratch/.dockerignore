@@ -1,0 +1,12 @@
+# Never send these to the Docker daemon
+.git/
+__pycache__/
+*.pyc
+*.pyo
+.env
+.env.*
+*.log
+
+# Don't bake API keys into the image — pass at runtime via -e flags
+# This file is here as a reminder: config.yaml uses ${VAR} substitution,
+# but a .env file with real keys should never be COPYed in
